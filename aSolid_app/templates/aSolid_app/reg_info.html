@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'aSolid_app/css/reg_info.css' %}">
+    
+</head>
+<body>
+<div id="progress"></div>
+
+<div class="center">
+  <div id="register">
+
+    <i id="progressButton" class="ion-android-arrow-forward next"></i>
+
+    <div id="inputContainer">
+      <input id="inputField" required autofocus />
+      <label id="inputLabel"></label>
+      <div id="inputProgress"></div>
+    </div>
+
+  </div>
+</div>
+<script src="{% static 'aSolid_app/js/reg_info.js' %}"></script>
+</body>
+</html>

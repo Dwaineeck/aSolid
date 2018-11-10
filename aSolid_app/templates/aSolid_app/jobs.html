@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>aSolid | Jobs</title>
+	{% load staticfiles %}
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="static/aSolid_app/imgs/aSolid.png"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Arima+Madurai:100" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'aSolid_app/css/main.css' %}">
+</head>
+<body>
+<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-9 col-sm-10 col-md-11 col-lg-11 col-xl-11">
+				<a href="/"><img src="static/aSolid_app/imgs/aSolid.png" width="30%" height="100%"></a>
+			</div>
+			<div class="col-3 col-sm-2 col-md-1 col-lg-1 col-xl-1">
+				<a href='/logout' class="logout">Logout</a>
+			</div>
+		</div>
+		<br>
+		<div class="row justify-content-center">
+			<h1>Welcome, {{user.first_name}}!</h1>
+		</div>
+		<br>
+        <div class="row justify-content-center" id="all-div">
+
+            <div class="col-md-4 form" id="link1">
+				<label class="headlabel">JOBS AVAILABLE</label>
+				{% for job in jobs %}
+					<p>
+						<label>Job:</label>
+						<span class="red">{{job.job}} </span>
+					</p>
+					<p>
+						<label>What they should do:</label>
+						<span class="purple">{{job.description}}</span>
+					</p>
+					<p>
+						<label>Location:</label>
+						<span class="green">{{job.location}}</span>
+					</p>
+					<a href="/jobs/{{job.id}}" class="btn btn-info" role="button">View Job</a>
+					<a href="/add_add/{{job.id}}" class="btn btn-success" role="button">Add to My Jobs</a>
+					{% if job.poster.id == request.session.user_id %}
+					<a href="/users/{{job.id}}/edit" class="btn btn-warning" role="button">Edit Job Info</a>
+					<a href="/users/{{job.id}}/delete" class="btn btn-danger" role="button">Delete Job</a>
+					<hr>
+					{% endif %}
+				{% endfor %}
+            </div>
+            <div class="col-md-4 form" id="link2">
+				<label class="headlabel">MY JOBS</label>
+				<!-- My Jobs -->
+				{% for add in add %}
+					<p>
+						<label>Job:</label>
+					</p>
+					<p>
+						<span class="red">{{add.job}} </span>
+					</p>
+					<a href="/jobs/{{add.id}}" class="btn btn-info" role="button">View Job</a>
+					<a href="/remove_add/{{add.id}}"  class="btn btn-danger" role="button">Remove from My Jobs</a>
+					<a href="/users/{{add.id}}/delete"  class="btn btn-success" role="button">Complete Job</a>
+				{% endfor %}
+            </div>
+            <div class="col-md-4 form" id="link3">
+				<label class="headlabel">CREATE A JOB</label>
+				<form action="/create" method="post">
+				{% csrf_token %}
+				<!-- Jobs validation messages  -->
+				{% if messages %}
+				{% for message in messages%}
+					{% if 'add_item' in message.tags %}
+						<p class="text-danger">{{message}}</p>
+					{% endif %}
+				{%endfor%}
+				{% endif %}
+				<input type="text" name="job" class="input jobtitle"  placeholder="Job Title">
+				<textarea name="description" class="input jobdesc"  placeholder="What's needed?"></textarea>
+				<textarea name="location" class="input jobloc"  placeholder="Where?"></textarea>
+				<div class="row justify-content-center">
+				<button type="submit" class="btn btn-success">Submit</button>
+				</div>
+				</form>
+            </div>
+        </div>
+	</div>
+<br>
+<script src="{% static 'aSolid_app/js/main.js' %}"></script>
+</body>
+</html>
+

@@ -1,0 +1,92 @@
+*{
+  /* border: 1px dotted red; */
+}
+body{
+  font-size: 30px;
+  background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/dark_embroidery.png);
+}
+.btn{
+  font-size: 20px;
+}
+.fontSize{
+    font-size: 100px;
+}
+label{
+  text-decoration: underline;
+}
+.headlabel{
+  color: rgb(255, 153, 0);
+}
+body, a, .input{
+  color: rgb(5, 156, 202);
+  font-family: 'Arima Madurai', cursive;
+}
+p{
+  margin: 0px;
+  padding: 0px;
+}
+a{
+  text-align: center;
+  text-decoration: underline;
+}
+.blue{
+  color: rgb(5, 156, 202);
+}
+.white, .login::placeholder{
+  color: white;
+}
+.logout, .red, .jobtitle, .jobtitle::placeholder{
+  color: red;
+}
+.green, .jobloc, .jobloc::placeholder{
+  color: rgb(2, 190, 2);
+}
+.purple, .jobdesc, .jobdesc::placeholder{
+  color: rgb(226, 10, 226);
+}
+.input{
+  border-bottom: 2px solid rgb(5, 156, 202);
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  padding: 0;
+  margin: 10px;
+  position: relative;
+  z-index: 2;
+  background-color: transparent;
+}
+.under{
+  border-bottom: 3px solid rgb(5, 156, 202);
+}
+textarea{
+  height: 50px;
+  resize: none;
+}
+.form{
+  display: block;
+  text-align: center;
+}
+.col-2, .col-sm-2, .col-md-2, .col-lg-1, .col-xl-1{
+  padding: 0px;
+}
+.col-2, .col-sm-2, .col-md-2{
+  padding-right: 5px;
+}
+.how-it-works__step-label {
+    color: white;
+    font-size: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 1px solid rgb(5, 156, 202);
+    margin-right: 2px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>aSolid | Edit {{job.poster.first_name}}'s {{job.job}}</title>
+  {% load staticfiles %}
+  <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/static/aSolid_app/imgs/aSolid.png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:100" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'aSolid_app/css/main.css' %}">
+</head>
+<body>
+  <br>
+  <div class="container">
+		<div class="row">
+			<div class="col-9 col-sm-10 col-md-11 col-lg-11 col-xl-11">
+				<a href="/"><img src="/static/aSolid_app/imgs/aSolid.png" width="30%" height="80%"></a>
+			</div>
+			<div class="col-3 col-sm-2 col-md-1 col-lg-1 col-xl-1">
+        <a href="/jobs" class="green">Back</a>
+				<a href='/logout' class="logout">Logout</a>
+			</div>
+		</div>
+    <br>
+    <div class="row justify-content-center">
+      <h1>Edit {{job.poster.first_name}}'s <span class="red">{{job.job}} </span> Job</h1>
+    </div>
+    <div class="row justify-content-center form">
+    <form action="/users/{{job.id}}/update" method="post">
+    {% if messages %}
+      {% for message in messages%}
+        {% if 'registration' in message.tags %}
+          <p class="text-danger">{{message}}</p>
+        {% endif %}
+      {%endfor%}
+    {% endif %}
+      {% csrf_token %}
+        {% if job.poster.id == request.session.user_id %}
+      <p>
+        <label>Job:</label>
+        <input type="text" class="input jobtitle red" name="job" value="{{job.job}}">
+      </p>
+      <p>
+        <label>What they should do:</label>
+        <input type="text" class="input jobdesc purple" name="description" value="{{job.description}}">
+      </p>
+      <p>
+        <label>Location:</label>
+        <input type="text" class="input jobloc green" name="location" value="{{job.location}}">
+      </p>
+      <button type="submit" name="Update" value="Change User" class="btn btn-success">Update</button>
+      {% endif %}
+    </form>
+    </div>
+  </div>
+</body>
+</html>
